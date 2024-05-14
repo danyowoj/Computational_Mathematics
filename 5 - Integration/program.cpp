@@ -1,39 +1,50 @@
 #include <iostream>
 #include <math.h>
-#define e 2.718281
-#define epsilon pow(10, -5)
-#define Integral 1.02814
 
-long double f(long double x)
+double f(long double x)
 {
-    x = pow(e, x) / sqrt(1 + pow(e, x));
+    x = 1 / x;
     return x;
 }
 
-long double integral(long double a, long double b)
+double trapezoidalIntegral(double a, double b, int n)
 {
-    long double i;
-    long double h = 0.0, sint = 0.0;
+    const double width = (b - a) / n;
 
-    h = (b - a) / 10000;
-    i = a + h / 2;
-
-    while (i <= b)
+    double trapezoidal_integral = 0;
+    for (int step = 0; step < n; step++)
     {
-        sint += f(i) * h;
-        i += h;
-        if (fabs(sint - Integral) < epsilon)
-            break;
+        const double x1 = a + step * width;
+        const double x2 = a + (step + 1) * width;
+
+        trapezoidal_integral += 0.5 * (x2 - x1) * (f(x1) + f(x2));
     }
 
-    return sint;
+    return trapezoidal_integral;
+}
+
+double simpsonIntegral(double a, double b, int n)
+{
+    const double width = (b - a) / n;
+
+    double simpson_integral = 0;
+    for (int step = 0; step < n; step++)
+    {
+        const double x1 = a + step * width;
+        const double x2 = a + (step + 1) * width;
+
+        simpson_integral += (x2 - x1) / 6.0 * (f(x1) + 4.0 * f(0.5 * (x1 + x2)) + f(x2));
+    }
+
+    return simpson_integral;
 }
 
 int main()
 {
-    std::cout << "Function = pow(e, x) / sqrt(1 + pow(e, x))" << std::endl;
-    std::cout << "Limits of integration: a = 0; b = 1" << std::endl;
-    std::cout << "Integral = " << integral(0, 1) << std::endl;
+    std::cout << "Function = 1 / x" << std::endl;
+    std::cout << "Limits of integration: a = 1; b = 2" << std::endl;
+    std::cout << "Integral (trapqzoidal) = " << trapezoidalIntegral(1, 2, 10000) << std::endl;
+    std::cout << "Integral (simpson) = " << simpsonIntegral(1, 2, 10000) << std::endl;
 
     return 0;
 }
