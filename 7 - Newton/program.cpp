@@ -86,13 +86,13 @@ int main()
     calculateDifferenceTable(y, delta, N);
 
     std::cout << std::endl
-              << "Interpolation by 1 Newton:" << std::endl;
-    double P3_N1 = NewtonInterpolation_1(x, y, delta, n, 2.5);
-    std::cout << "f(2.5) = " << P3_N1 << std::endl;
+              << "Unequal nodes (method 1):" << std::endl;
+    double N1 = NewtonInterpolation_1(x, y, delta, n, 2.56);
+    std::cout << "f(2.56) = " << N1 << std::endl;
     std::cout << std::endl
-              << "Interpolation by 2 Newton:" << std::endl;
-    double P3_N2 = NewtonInterpolation_2(x, y, delta, n, 2.5, 1);
-    std::cout << "f(2.56) = " << P3_N2 << std::endl;
+              << "Equal nodes (method 2):" << std::endl;
+    double N2 = NewtonInterpolation_2(x, y, delta, n, 2.5, 1);
+    std::cout << "f(2.5) = " << N2 << std::endl;
 
     return 0;
 }
