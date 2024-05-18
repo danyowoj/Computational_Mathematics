@@ -15,11 +15,11 @@ int main()
     for (int i = -1; i <= 1; i += 2)
     {
 
-        a = -10;
-        b = 10;
+        a = -100;
+        b = 100;
 
-        g = a + (b - a) * (0.38);
-        h = b - 0.38 * (b - a);
+        g = a + (b - a) * (0.381966);
+        h = b - 0.381966 * (b - a);
         fu1 = i * f(g);
         fu2 = i * f(h);
 
@@ -32,7 +32,7 @@ int main()
                 b = h;
                 h = g;
                 fu2 = fu1;
-                g = a + (b - a) * (0.38);
+                g = a + (b - a) * (0.381966);
                 fu1 = i * f(g);
             }
             else
@@ -41,7 +41,7 @@ int main()
                 a = g;
                 g = h;
                 fu1 = fu2;
-                h = b - 0.38 * (b - a);
+                h = b - 0.381966 * (b - a);
                 fu2 = i * f(h);
             }
         } while (fabs(a - b) > eps); // exit condition
