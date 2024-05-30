@@ -1,6 +1,4 @@
-#include <cstdlib> // для system
 #include <iostream>
-#include <string>
 #include <math.h>
 
 double fun(double x, double y)
