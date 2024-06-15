@@ -48,5 +48,5 @@ int main()
         std::cout << "Step " << counter++ << ": \t" << s1 << std::endl;
     } while (fabs(s1 - s) > eps); // comparison of approximations with a given accuracy
 
-    std::cout << "\nAnswer is " << s1 << std::endl;
+    std::cout << s1 << " is the answer" << std::endl;
 }
