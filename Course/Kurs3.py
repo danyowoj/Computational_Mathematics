@@ -5,7 +5,7 @@ import p4
 x0 = 0
 h = 0.1
 x_end = 1
-eps = 10 ** -8
+eps = 10 ** -12
 y0 = np.array([1, 1])
 count = 0
 
@@ -54,7 +54,10 @@ def rec(h, p):
             print(f'\nh = {h}')
             for i in range(len(x1)):
                 check = abs(y1[i][0] - y2[2 * i][0]) > 15 * eps
-                print(f'x = {x1[i]:<11.11} | y = {y1[i][0]:<11.11} | y\' = {y1[i][1]:<11.11}')
+                #print(f'x = {x1[i]:<11.11} | y = ')
+                #print(f"{y1[i][0]:.{12}f}")
+                #print(f' | y\' = {y1[i][1]:<11.11}')
+                print(f'x = {x1[i]:<10.10} | y = {y1[i][0]:<14.14} | y\' = {y1[i][1]:<14.14}')
 
             if check:
                 count = 0

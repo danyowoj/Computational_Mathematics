@@ -22,13 +22,13 @@ def f(x0, y0, h, func, x_end):
         # Increasing the iteration counter
         i += 1
 
-    return np.round(x, 8), np.round(y, 8)
+    return np.round(x, 12), np.round(y, 12)
 
 
 # Definition of the 'func' function, which describes a system of differential equations
 def func(x, y):
     # Calculating values for a system of differential equations and rounding them to 8 decimal places
-    return np.round(np.array([y[1], np.exp(x)]), 8)
+    return np.round(np.array([y[1], np.exp(x)]), 12)
 
 
 # Initialization of initial values and parameters
